@@ -33,10 +33,12 @@ public class AddressBook {
         contacts.add(contactPerson);
     }
 
-    public void edit(String name) {
+    public boolean edit(String name) {
+        boolean isFound = false;
         for (int i = 0; i < contacts.size(); i++) {
             Scanner scanner = new Scanner(System.in);
             if (contacts.get(i).getFirstName().equals(name)) {
+                isFound = true;
                 System.out.println("Enter Person First Name : ");
                 String firstName = scanner.next();
                 contacts.get(i).setFirstName(firstName);
@@ -58,8 +60,21 @@ public class AddressBook {
                 System.out.println("Enter person Email ID : ");
                 String email = scanner.next();
                 contacts.get(i).setEmail(email);
+                break;
             }
         }
+        return isFound;
+    }
+
+    public boolean delete(String name) {
+        boolean isFound = false;
+        for (int i = 0; i < contacts.size(); i++) {
+            if (contacts.get(i).getFirstName().equals(name)) {
+                isFound = true;
+                contacts.remove(i);
+            }
+        }
+        return isFound;
     }
 
     @Override
