@@ -1,11 +1,24 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class AddressBook {
 
     ArrayList<Contact> contacts = new ArrayList<>();
+    private String addressBookName;
+
+    public AddressBook() {
+    }
+    public String getAddressBookName() {
+        return addressBookName;
+    }
+
+    public void setAddressBookName(String addressBookName) {
+        this.addressBookName = addressBookName;
+    }
+
     public void getData() {
         Contact contactPerson = new Contact();
         Scanner scanner = new Scanner(System.in);
@@ -66,7 +79,7 @@ public class AddressBook {
         return isFound;
     }
 
-    public boolean delete(String name) {
+    public boolean deleteValue(String name) {
         boolean isFound = false;
         for (int i = 0; i < contacts.size(); i++) {
             if (contacts.get(i).getFirstName().equals(name)) {
@@ -80,7 +93,21 @@ public class AddressBook {
     @Override
     public String toString() {
         return "AddressBook{" +
-                "contacts=" + contacts +
+                "addressBookName='" + addressBookName + '\'' +
+                ", contacts=" + contacts +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AddressBook that = (AddressBook) o;
+        return Objects.equals(contacts, that.contacts) && Objects.equals(addressBookName, that.addressBookName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(contacts, addressBookName);
     }
 }
