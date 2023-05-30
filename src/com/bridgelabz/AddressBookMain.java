@@ -20,7 +20,6 @@ public class AddressBookMain {
             System.out.println("Enter your choice:");
             choice = scanner.nextInt();
             switch (choice) {
-                //AddressBook addressBook;
                 case 1 : {
                     System.out.println("Enter the Address Book Name to add:");
                     String addressBookName = scanner.next();
@@ -32,9 +31,11 @@ public class AddressBookMain {
                 case 2 : {
                     System.out.println("Enter the address book name to add person:");
                     String name = scanner.next();
+                    System.out.println("Enter Person First Name : ");
+                    String contactPersonName = scanner.next();
                     for (int i = 0; i < addressBooks.size(); i++) {
                         if (addressBooks.get(i).getAddressBookName().equals(name)) {
-                            addressBooks.get(i).getData();
+                            addressBooks.get(i).getData(contactPersonName);
                         }
                     }
                 }break;
