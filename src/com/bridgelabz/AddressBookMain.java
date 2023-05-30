@@ -11,7 +11,8 @@ public class AddressBookMain {
         do {
             System.out.println("1.Add Contact");
             System.out.println("2.Display");
-            System.out.println("3.Exit");
+            System.out.println("3.Edit");
+            System.out.println("4.Exit");
             System.out.println("Enter your choice:");
             choice = scanner.nextInt();
             switch (choice) {
@@ -22,6 +23,11 @@ public class AddressBookMain {
                     System.out.println(addressBook);
                 }break;
                 case 3 : {
+                    System.out.println("Enter the contact person name to edit");
+                    String name = scanner.next();
+                    addressBook.edit(name);
+                }break;
+                case 4 : {
                     System.out.println("Thank you! See you soon!");
                     System.exit(0);
                 }break;
@@ -30,6 +36,6 @@ public class AddressBookMain {
                 }
             }
         }
-        while (choice != 3);
+        while (choice != 4);
     }
 }
